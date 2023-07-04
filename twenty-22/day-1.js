@@ -38,8 +38,27 @@ const main = () => {
       return;
     }
 
-    console.log(getMaxCalories(data));
-    console.log(getMaxThreeElvesCalories(data));
+    console.log(
+      "The maximum calories among all the elves should be 1000 : ",
+      getMaxCalories("1000"));
+    console.log(
+      "The maximum calories among all the elves should be 2000 : ",
+      getMaxCalories("1000\n\n2000"));
+    console.log(
+      "The maximum calories among all the elves should be 3000 : ",
+      getMaxCalories("2000\n\n1000\n2000\n\n"));
+    console.log("The maximun calories among all the elves is : ", getMaxCalories(data));
+
+    console.log(
+      "The sum of three maximum elves calories should be 2000 : ",
+      getMaxThreeElvesCalories("2000"));
+    console.log(
+      "The sum of three maximum elves calories should be 2000 : ",
+      getMaxThreeElvesCalories("1000\n500\n500"));
+    console.log(
+      "The sum of three maximum elves calories should be 8400 : ",
+      getMaxThreeElvesCalories("1000\n500\n500\n\n3000\n500\n2500\n\n100\n\n400"));
+    console.log("The sum of three maximum elves calories is : ", getMaxThreeElvesCalories(data));
   })
 }
 

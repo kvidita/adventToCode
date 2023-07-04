@@ -29,9 +29,9 @@ const main = () => {
       return;
     };
 
-    console.log("Instructions takes santa on floor - ", determineFloorDirection("(("));
-    console.log("Instructions takes santa on floor - ", determineFloorDirection("(())("));
-    
+    console.log("Instructions should take santa on floor 2: ", determineFloorDirection("(("));
+    console.log("Instructions should take santa on floor 1: ", determineFloorDirection("(())("));
+
     console.log("First position that takes santa to basement is : ", ditermineFirstBasementMovePosition(data));
   })
 };
