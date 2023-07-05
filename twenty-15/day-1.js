@@ -1,9 +1,11 @@
 const fs = require("fs");
 
+const DIRECTIONS = { up: "(", down: ")" };
+
 const determineFloorDirection = (floorSign) => {
   const directions = floorSign.split("");
   return directions.reduce((count, direction) => {
-    return direction === "(" ? ++count : --count;
+    return direction === DIRECTIONS.up ? ++count : --count;
   }, 0);
 }
 
@@ -11,8 +13,10 @@ const ditermineFirstBasementMovePosition = (floorSign) => {
   let floorCount = 0;
   const directions = floorSign.split("");
 
-  for (let index = 0; index < directions.length; index++) {
-    directions[index] === "(" ? floorCount++ : floorCount--;
+  let index = 0;
+  while (index < directions.length) {
+    directions[index] === DIRECTIONS.up ? floorCount++ : floorCount--;
+    index++;
 
     if (floorCount < 0) {
       return ++index;
