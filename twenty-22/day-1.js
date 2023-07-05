@@ -10,13 +10,10 @@ const addNumbers = (numbers) => numbers.reduce((sum, number) => sum + number, 0)
 
 const getElfCalories = (elfCalories) => splitByLines(elfCalories).map(toNumber);
 
-const getElvesCalories = (calories) => {
-  return splitByBlankLines(calories).map(getElfCalories);
-}
+const getElvesCalories = (calories) => splitByBlankLines(calories).map(getElfCalories);
 
 const getMaxCalories = (calories) => {
   const elvesCalories = getElvesCalories(calories);
-
   return Math.max(...elvesCalories.map(addNumbers));
 }
 
@@ -63,3 +60,13 @@ const main = () => {
 }
 
 main();
+
+module.exports = {
+  splitByBlankLines,
+  splitByLines,
+  toNumber,
+  getElfCalories,
+  getElvesCalories,
+  getMaxCalories,
+  getMaxThreeElvesCalories
+};
