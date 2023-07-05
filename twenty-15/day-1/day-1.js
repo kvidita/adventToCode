@@ -15,7 +15,8 @@ const ditermineFirstBasementMovePosition = (floorSign) => {
 
   let index = 0;
   while (index < directions.length) {
-    directions[index] === DIRECTIONS.up ? floorCount++ : floorCount--;
+    const floorDelta = directions[index] === DIRECTIONS.up ? 1 : -1;
+    floorCount += floorDelta;
     index++;
 
     if (floorCount < 0) {
