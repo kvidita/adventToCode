@@ -14,14 +14,11 @@ const findSlackArea = (dimensions) => {
   return min1 * min2;
 };
 
-const findWrapperArea = (boxDimensions) => {
-  const dimensions = parseDimensions(boxDimensions);
+const findWrapperArea = (dimensions) => {
   const boxSurfaceArea = findSurfaceArea(dimensions);
   const slack = findSlackArea(dimensions);
 
   return boxSurfaceArea + slack;
 };
 
-findWrapperArea("1x1x1")
-
-module.exports = { findWrapperArea, parseDimensions, findSurfaceArea, findSlackArea };
+module.exports = { findWrapperArea, parseDimensions, findSurfaceArea, findSlackArea, toNumber };
