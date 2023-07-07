@@ -1,24 +1,36 @@
-const toNumber = (number) => +number;
+const rectangleArea = (length, height) => length * height;
 
-const parseDimensions = (rawDimension) => {
-  return rawDimension.split("x").map(toNumber);
+const cuboidSurfaceArea = ([l, b, h]) => {
+  const surfaceArea = 2 * (
+    rectangleArea(l, b) +
+    rectangleArea(b, h) +
+    rectangleArea(h, l));
+  return surfaceArea;
 };
 
-const findSurfaceArea = (dimensions) => {
-  const [l, b, h] = dimensions;
-  return 2 * (l * b + b * h + h * l);
-};
+const sortNumbers = (numbers) => numbers.sort((a, b) => a - b);
 
-const findSlackArea = (dimensions) => {
-  const [min1, min2] = dimensions.sort((a, b) => a - b);
+const smallestFaceArea = (dimensions) => {
+  const [min1, min2] = sortNumbers(dimensions);
   return min1 * min2;
 };
 
-const findWrapperArea = (dimensions) => {
-  const boxSurfaceArea = findSurfaceArea(dimensions);
-  const slack = findSlackArea(dimensions);
+const boxWrapperArea = (boxDimensions) => {
+  const boxSurfaceArea = cuboidSurfaceArea(boxDimensions);
+  const slackArea = smallestFaceArea(boxDimensions);
 
-  return boxSurfaceArea + slack;
+  return boxSurfaceArea + slackArea;
 };
 
-module.exports = { findWrapperArea, parseDimensions, findSurfaceArea, findSlackArea, toNumber };
+const calculateWrapperArea = (dimensions) => {
+  const boxesWrapperArea = dimensions.map(boxWrapperArea);
+
+  return boxesWrapperArea.reduce((total, wrapperArea) => total + wrapperArea);
+};
+
+module.exports = {
+  boxWrapperArea,
+  cuboidSurfaceArea,
+  smallestFaceArea,
+  calculateWrapperArea
+};
