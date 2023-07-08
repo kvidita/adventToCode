@@ -1,16 +1,16 @@
 const DIRECTIONS = { "^": "North", "<": "West", ">": "East", "v": "South" };
 
 const getTotalHousesVisitedBySanta = (instructions, santa) => {
-  const locationsVisited = [];
+  const initialHouseId = santa.location.coordinates.join("");
+  const uniqueLocationsVisited = new Set([initialHouseId]);
 
-  instructions.split("").forEach((instruction) => {
+  [...instructions].forEach((instruction) => {
     const direction = DIRECTIONS[instruction];
     santa.move(direction);
-    const locationId = "" + santa.location.coordinates[0] + santa.location.coordinates[1];
-    locationsVisited.push(locationId);
+    const locationId = santa.location.coordinates.join("");
+    uniqueLocationsVisited.add(locationId);
   });
 
-  const uniqueLocationsVisited = new Set(locationsVisited);
   return uniqueLocationsVisited.size;
 };
 

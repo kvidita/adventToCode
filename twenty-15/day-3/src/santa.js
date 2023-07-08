@@ -14,4 +14,6 @@ class Santa {
   };
 };
 
+//how santa should interact with location class
+
 exports.Santa = Santa;

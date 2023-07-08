@@ -27,5 +27,4 @@ class Location {
     return new Location(this.#coordinateX + 1, this.#coordinateY);
   };
 };
-
 exports.Location = Location;
