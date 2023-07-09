@@ -1,36 +1,37 @@
 const assert = require("assert");
 const { describe, it } = require("node:test");
+
 const { Santa } = require("../src/santa.js");
 const { Location } = require("../lib/location.js");
 
 describe("Santa", () => {
   describe("move", () => {
-    it("should move to location 0, 1, when instructed to move up", () => {
+    it("should be at location 0, 1, when instructed to move to North", () => {
       const location = new Location(0, 0);
       const santa = new Santa(location);
 
-      santa.move("North");
+      santa.moveNorth();
 
-      assert.deepStrictEqual(santa.location.coordinates, [0, 1]);
+      assert.deepStrictEqual(santa.location, [0, 1]);
     });
 
-    it("should move to location 1, 0, when instructed to move East", () => {
+    it("should be at location 1, 0, when instructed to move to East", () => {
       const location = new Location(0, 0)
       const santa = new Santa(location);
 
-      santa.move("East");
+      santa.moveEast();
 
-      assert.deepStrictEqual(santa.location.coordinates, [1, 0]);
+      assert.deepStrictEqual(santa.location, [1, 0]);
     });
 
-    it("should move to location 1, 1, when instruction are as up, right", () => {
+    it("should be at location 1, 1, when instructed to move to North, East", () => {
       const location = new Location(0, 0)
       const santa = new Santa(location);
 
-      santa.move("North");
-      santa.move("East");
+      santa.moveNorth();
+      santa.moveEast();
 
-      assert.deepStrictEqual(santa.location.coordinates, [1, 1]);
+      assert.deepStrictEqual(santa.location, [1, 1]);
     });
   });
 });

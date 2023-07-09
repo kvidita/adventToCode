@@ -1,17 +1,30 @@
-const DIRECTIONS = { "^": "North", "<": "West", ">": "East", "v": "South" };
+class GuiderElf {
+  #housesVisited;
+  #santa;
 
-const getTotalHousesVisitedBySanta = (instructions, santa) => {
-  const initialHouseId = santa.location.coordinates.join("");
-  const uniqueLocationsVisited = new Set([initialHouseId]);
+  constructor(santa) {
+    this.#santa = santa;
+    this.#housesVisited = new Set([santa.location.toString()]);
+  }
 
-  [...instructions].forEach((instruction) => {
-    const direction = DIRECTIONS[instruction];
-    santa.move(direction);
-    const locationId = santa.location.coordinates.join("");
-    uniqueLocationsVisited.add(locationId);
-  });
+  guideSanta(instructions) {
+    const DIRECTIONS = {
+      "^": () => this.#santa.moveNorth(),
+      "<": () => this.#santa.moveWest(),
+      ">": () => this.#santa.moveEast(),
+      "v": () => this.#santa.moveSouth()
+    };
 
-  return uniqueLocationsVisited.size;
+    [...instructions].forEach((instruction) => {
+      DIRECTIONS[instruction]();
+      const houseId = this.#santa.location.toString();
+      this.#housesVisited.add(houseId);
+    });
+  };
+
+  get housesVisitedCount() {
+    return this.#housesVisited.size;
+  };
 };
 
-exports.getTotalHousesVisitedBySanta = getTotalHousesVisitedBySanta;
+exports.GuiderElf = GuiderElf;

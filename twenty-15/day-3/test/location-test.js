@@ -1,7 +1,7 @@
 const { describe, it } = require("node:test");
-const { Location } = require("../lib/location");
 const assert = require("assert");
 
+const { Location } = require("../lib/location");
 
 describe("Location", () => {
   describe("coordinates", () => {

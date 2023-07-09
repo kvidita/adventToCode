@@ -9,22 +9,23 @@ class Location {
 
   get coordinates() {
     return [this.#coordinateX, this.#coordinateY];
-  }
+  };
 
   get North() {
-    return new Location(this.#coordinateX, this.#coordinateY + 1);
+    return new Location(this.#coordinateX, ++this.#coordinateY);
   };
 
   get West() {
-    return new Location(this.#coordinateX - 1, this.#coordinateY);
+    return new Location(--this.#coordinateX, this.#coordinateY);
   };
 
   get South() {
-    return new Location(this.#coordinateX, this.#coordinateY - 1);
+    return new Location(this.#coordinateX, --this.#coordinateY);
   };
 
   get East() {
-    return new Location(this.#coordinateX + 1, this.#coordinateY);
+    return new Location(++this.#coordinateX, this.#coordinateY);
   };
 };
+
 exports.Location = Location;
