@@ -12,19 +12,19 @@ class Location {
   };
 
   get North() {
-    return new Location(this.#coordinateX, ++this.#coordinateY);
+    return new Location(this.#coordinateX, this.#coordinateY + 1);
   };
 
   get West() {
-    return new Location(--this.#coordinateX, this.#coordinateY);
+    return new Location(this.#coordinateX - 1, this.#coordinateY);
   };
 
   get South() {
-    return new Location(this.#coordinateX, --this.#coordinateY);
+    return new Location(this.#coordinateX, this.#coordinateY - 1);
   };
 
   get East() {
-    return new Location(++this.#coordinateX, this.#coordinateY);
+    return new Location(this.#coordinateX + 1, this.#coordinateY);
   };
 };
 

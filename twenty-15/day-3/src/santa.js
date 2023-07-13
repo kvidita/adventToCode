@@ -26,6 +26,26 @@ class Santa {
   };
 };
 
-//how santa should interact with location class. should location be a class ?
+class Santas {
+  #santas;
+  #currentSanta;
 
-exports.Santa = Santa;
+  constructor(santa1, santa2) {
+    this.#santas = [santa1, santa2];
+    this.#currentSanta = this.#santas[0];
+  };
+
+  get currentSantaLocation() {
+    return this.#currentSanta.location;
+  }
+
+  get currentSanta() {
+    return this.#currentSanta;
+  }
+
+  swapSantas() {
+    [this.#currentSanta] = this.#santas.reverse();
+  };
+};
+
+module.exports = { Santa, Santas };

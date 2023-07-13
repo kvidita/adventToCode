@@ -1,0 +1,3 @@
+houseVisitedCount's test should not be much specific
+location coordinates test should not be much specific
+santa move test properly

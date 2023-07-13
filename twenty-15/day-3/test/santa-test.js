@@ -2,7 +2,7 @@ const assert = require("assert");
 const { describe, it } = require("node:test");
 
 const { Santa } = require("../src/santa.js");
-const { Location } = require("../lib/location.js");
+const { Location } = require("../src/location.js");
 
 describe("Santa", () => {
   describe("move", () => {
